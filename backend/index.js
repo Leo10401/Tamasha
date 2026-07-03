@@ -1,7 +1,16 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
-app.use(express.json());
+
 require('dotenv').config();
+
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  credentials: true
+};
+
+app.use(cors(corsOptions));
+app.use(express.json());
 const mongoose = require('./connection');
 const userRoutes = require('./routes/UserRoutes');
 const eventRoutes = require('./routes/EventRoute');
