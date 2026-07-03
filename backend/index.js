@@ -4,12 +4,7 @@ const app = express();
 
 require('dotenv').config();
 
-const corsOptions = {
-  origin: process.env.FRONTEND_URL || "http://localhost:3000",
-  credentials: true
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 const mongoose = require('./connection');
 const userRoutes = require('./routes/UserRoutes');
